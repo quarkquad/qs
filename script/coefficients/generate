@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+
+from scipy.signal import butter, lfilter, tf2sos
+from numpy import concatenate
+
+def butter_lowpass(lowcut, fs, order=5):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    b, a = butter(order, low, btype='low')
+    return b, a
+
+def butter_highpass(higcut, fs, order=5):
+    nyq = 0.5 * fs
+    high = higcut / nyq
+    b, a = butter(order, high, btype='high')
+    return b, a
+
+def butter_bandpass(lowcut, highcut, fs, order=5):
+    nyq = 0.5 * fs
+    low = lowcut / nyq
+    high = highcut / nyq
+    b, a = butter(order, [low, high], btype='band')
+    return b, a
+
+def c_array(list):
+    final = ""
+    for sos in list:
+        final += "{ " + ", ".join(str(e) for e in sos) + " }\n"
+    return final
+
+def run(order, sample_rate, stops):
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.signal import freqz
+
+    num_samples = 2*4096
+
+    fig, ax = plt.subplots()
+
+    b, a = butter_lowpass(stops[0], sample_rate, order=order)
+    w, H = freqz(b, a, worN=num_samples)
+    freq = w*sample_rate / (2*np.pi)
+    ax.semilogx(freq, 20*np.log10(np.abs(H)+1e-20), label="< %d" % (stops[0]))
+    print(stops[0], tf2sos(b, a).tolist())
+
+    for i in range(1, len(stops)):
+        start, stop = stops[i-1], stops[i]
+        b, a = butter_bandpass(start, stop, sample_rate, order=order)
+        w, H = freqz(b, a, worN=num_samples)
+        freq = w*sample_rate / (2*np.pi)
+        ax.semilogx(freq, 20*np.log10(np.abs(H)+1e-20), label="%d-%d band" % (start, stop))
+        print(start, stop, tf2sos(b, a).tolist())
+
+    high_stop = stops[len(stops)-1]
+    b, a = butter_highpass(high_stop, sample_rate, order=order)
+    w, H = freqz(b, a, worN=num_samples)
+    freq = w*sample_rate / (2*np.pi)
+    ax.semilogx(freq, 20*np.log10(np.abs(H)+1e-20), label="> %d" % (high_stop))
+    print(high_stop, tf2sos(b, a).tolist())
+
+    plt.legend(loc='lower right')
+    plt.xlabel('Frequency / Hz')
+    plt.ylabel('Damping / dB')
+    plt.grid(True)
+    plt.axis([10, 20000, -80, 5])
+
+    return plt
+
+if __name__ == '__main__':
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Coefficients for highpass filters.')
+    parser.add_argument('--stops', metavar='STOPS', nargs='+', type=float, help='frequency stops')
+    parser.add_argument('--sample-rate', metavar='SAMPLE_RATE', type=int, default=48000, help='sample rate')
+    parser.add_argument('--order', metavar='ORDER', type=int, help='filter order', default=2)
+    parser.add_argument('--plot', dest='plot', action='store_true', help='plot the response')
+
+    args = parser.parse_args()
+    plt = run(args.order, args.sample_rate, args.stops)
+    if args.plot:
+        plt.show()

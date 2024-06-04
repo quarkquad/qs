@@ -1,0 +1,8 @@
+@PACKAGE_INIT@
+
+check_required_components("@PROJECT_NAME@")
+
+set_and_check(QS_INCLUDE_PATH "@PACKAGE_QS_INCLUDE_PATH@")
+set_and_check(QS_MODULE_PATH "@PACKAGE_QS_INCLUDE_PATH@/qs")
+
+juce_add_module(${QS_MODULE_PATH} ALIAS_NAMESPACE quark)

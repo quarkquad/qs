@@ -1,0 +1,41 @@
+name: Test
+on:
+  push:
+    branches: main
+
+jobs:
+  darwin:
+    name: "macOS"
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout Sources
+        uses: actions/checkout@v3
+      - name: Homebrew Dependencies
+        run: |
+          brew update
+          brew upgrade cmake
+          brew install coreutils
+      - name: Install JUCE
+        run: script/ci/install-juce
+      - name: Install Catch2
+        run: script/ci/install-catch2
+      - name: Run Tests
+        run: script/test
+  windows:
+    name: "Windows"
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Sources
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: script/ci/windows-setup.bat
+        shell: powershell
+      - name: Install JUCE
+        run: script/ci/windows-install-juce.bat
+        shell: powershell
+      - name: Install Catch2
+        run: script/ci/windows-install-catch2.bat
+        shell: powershell
+      - name: Run Tests
+        run: script/ci/windows-test.bat
+        shell: powershell

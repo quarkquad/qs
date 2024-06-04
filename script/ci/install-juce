@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+JUCE_VERSION=${JUCE_VERSION:-"7.0.3"}
+
+wget -q https://github.com/juce-framework/JUCE/archive/$JUCE_VERSION.zip -O juce.zip
+unzip -o juce.zip && rm juce.zip
+
+pushd JUCE-$JUCE_VERSION
+cmake -B cmake-build-install
+sudo cmake --build cmake-build-install --target install
+popd

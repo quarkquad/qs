@@ -1,0 +1,7 @@
+.cache/*
+build/*
+build-install/*
+build-examples/*
+cmake/*
+compile_commands.json
+*venv/*

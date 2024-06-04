@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+if [[ "$(uname)" != "Darwin" ]]; then
+    echo "Installation only implemented for macOS." && exit 1
+fi
+
+rm -rf ~/Library/Caches/AudioUnitCache
+sudo rm -rf /Library/Audio/Plug-Ins/Components/QSEncoder.component
+sudo rm -rf /Library/Audio/Plug-Ins/Components/QSDecoder.component
+sudo cp -R ./build/examples/QSEncoder/QSEncoder_artefacts/Debug/AU/QSEncoder.component /Library/Audio/Plug-Ins/Components/QSEncoder.component
+sudo cp -R ./build/examples/QSDecoder/QSDecoder_artefacts/Debug/AU/QSDecoder.component /Library/Audio/Plug-Ins/Components/QSDecoder.component
+
+sudo rm -rf /Library/Audio/Plug-Ins/VST3/QSEncoder.vst3
+sudo rm -rf /Library/Audio/Plug-Ins/VST3/QSDecoder.vst3
+sudo cp -R ./build/examples/QSEncoder/QSEncoder_artefacts/Debug/VST3/QSEncoder.vst3 /Library/Audio/Plug-Ins/VST3/QSEncoder.vst3
+sudo cp -R ./build/examples/QSDecoder/QSDecoder_artefacts/Debug/VST3/QSDecoder.vst3 /Library/Audio/Plug-Ins/VST3/QSDecoder.vst3

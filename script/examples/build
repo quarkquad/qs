@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+BUILD_MODE="${BUILD_MODE:-Debug}"
+BUILD_PLATFORM="$(uname)"
+BUILD_ARCH=$(uname -m)
+
+cmake -B build-examples \
+      -DCMAKE_OSX_DEPLOYMENT_TARGET=11 \
+      -DCMAKE_BUILD_TYPE="$BUILD_MODE" \
+      -DCMAKE_OSX_ARCHITECTURES="$BUILD_ARCH" \
+	  -DQS_EXAMPLES=ON
+
+cmake --build build-examples \
+      --target QSEncoder_All QSDecoder_All \
+      --config=Debug
