@@ -15,7 +15,8 @@ Clone and install the CMake package:
 ```shell
 $ git clone https://github.com/quarkquad/qs.git qs
 $ cd qs
-$ CMAKE_INSTALL_PREFIX=... script/install
+$ cmake -B build-install -DCMAKE_INSTALL_PREFIX="..."
+$ cmake --build build-install --target install
 ```
 
 Add the following to your `CMakeLists.txt`:
