@@ -1,7 +1,7 @@
 # QS
 
 QS is a library for encoding and decoding audio in [Quadraphonic Sound (Regular
-Matrix)](https://en.wikipedia.org/wiki/QS_Regular_Matrix).
+Matrix)](https://en.wikipedia.org/wiki/QS_Regular_Matrix). The library is the core of [QUARK](https://quark.cykik.com), a DAW plugin for quadraphonic spatial audio production.
 
 ## Usage
 
