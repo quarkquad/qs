@@ -14,16 +14,6 @@ const float root2 = sqrt(2.0f);
 
 inline float safeLog10(float v) { return log10f(v + 1e-12f); }
 
-inline void absChannels(AudioBuffer<float> &buffer) {
-    const int numChannels = buffer.getNumChannels();
-    const int numSamples = buffer.getNumSamples();
-
-    for (auto channel = 0; channel < numChannels; ++channel) {
-        auto samples = buffer.getWritePointer(channel);
-        FloatVectorOperations::abs(samples, samples, numSamples);
-    }
-}
-
 inline void log10Channels(AudioBuffer<float> &buffer) {
     const int numChannels = buffer.getNumChannels();
     const int numSamples = buffer.getNumSamples();
