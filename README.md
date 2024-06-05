@@ -8,7 +8,7 @@ Matrix)](https://en.wikipedia.org/wiki/QS_Regular_Matrix).
 While the project currently relies on [JUCE](https://juce.com) structures, but we hope to make this usable outside of
 JUCE in the future. For now and simplicity, JUCE is the way.
 
-## As a CMake Package
+### As a CMake Package
 
 Clone and install the CMake package:
 
@@ -33,7 +33,7 @@ target_link_libraries(MyPlugin
 )
 ```
 
-## As a Project Subdirectory
+### As a Project Subdirectory
 
 Clone this repository as a subdirectory in your JUCE project:
 
