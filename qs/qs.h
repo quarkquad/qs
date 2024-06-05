@@ -8,7 +8,7 @@ BEGIN_JUCE_MODULE_DECLARATION
 
 ID:                 qs
 vendor:             dublab
-version:            1.0.0
+version:            0.1.0
 name:               qs
 description:        QS encoder and decoder.
 website:            https://dublab.com
