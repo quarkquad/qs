@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.26)
 
-project(QS VERSION 0.1.0 LANGUAGES CXX)
+project(QS VERSION 0.1.1 LANGUAGES CXX)
 include(CMakePackageConfigHelpers)
 
 set(QS_NAMESPACE quark)
