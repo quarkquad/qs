@@ -25,6 +25,17 @@ static void sine(float *out, float frequency, int samples) {
     }
 }
 
+TEST_CASE("hilbert: prepare sample rates") {
+    qs::dsp::HilbertTransform t;
+
+    t.prepare(11025.0f);
+    t.prepare(22050.0f);
+    t.prepare(44100.0f);
+    t.prepare(48000.0f);
+    t.prepare(96000.0f);
+    t.prepare(192000.0f);
+}
+
 TEST_CASE("constants: encoder channels") {
     REQUIRE((int)qs::encode::Channel::LF == 0);
     REQUIRE((int)qs::encode::Channel::RF == 1);
