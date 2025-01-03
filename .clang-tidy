@@ -7,6 +7,7 @@ FormatStyle:     llvm
 CheckOptions:
   cppcoreguidelines-avoid-magic-numbers.IgnorePowersOf2IntegerValues: 'true'
   cppcoreguidelines-avoid-magic-numbers.IgnoreAllFloatingPointValues: 'true'
+  cppcoreguidelines-avoid-do-while.IgnoreMacros: 'true'
   llvm-else-after-return.WarnOnConditionVariables: 'false'
   modernize-loop-convert.MinConfidence: reasonable
   modernize-replace-auto-ptr.IncludeStyle: llvm

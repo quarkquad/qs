@@ -1,5 +1,4 @@
 // NOLINTBEGIN(cppcoreguidelines-avoid-non-const-global-variables)
-// NOLINTBEGIN(cppcoreguidelines-avoid-do-while)
 
 #include <catch2/catch_approx.hpp>
 #include <catch2/catch_test_macros.hpp>
@@ -397,5 +396,4 @@ TEST_CASE("hilbert transform: phase coherence") {
     CHECK(hilbertTransform(15000.0f) < 2.0f);
 }
 
-// NOLINTEND(cppcoreguidelines-avoid-do-while)
 // NOLINTEND(cppcoreguidelines-avoid-non-const-global-variables)
