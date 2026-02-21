@@ -3,6 +3,8 @@
 
 #include "BandDecoder.h"
 
+using namespace juce;
+
 namespace qs::decode {
 
 BandDecoder::BandDecoder(BandSpec spec)
@@ -31,7 +33,7 @@ void BandDecoder::prepare(float rate, int samplesPerBlock) {
     buffer.setSize(4, samplesPerBlock);
     buffer.clear();
 
-    filter.prepare(rate, samplesPerBlock);
+    filter.prepare(rate, buffer.getNumChannels());
     matrix.prepare(rate, samplesPerBlock);
 }
 

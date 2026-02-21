@@ -7,8 +7,6 @@
 
 #include "Coefficients.h"
 
-using namespace juce;
-
 namespace qs::dsp {
 
 // IIRFilter is a second-order Butterworth filter.
@@ -32,7 +30,7 @@ class IIRFilter {
 
     // processBlock processes a buffer of audio. It only processes channel
     // indexes up until the number specified in prepare.
-    void process(AudioBuffer<float> &buffer);
+    void process(juce::AudioBuffer<float> &buffer);
 
     // reset clears all internal state.
     void reset();
@@ -45,8 +43,8 @@ class IIRFilter {
 
     double q, vh, vb, vl, arctanK;
 
-    HeapBlock<double> hist1;
-    HeapBlock<double> hist2;
+    juce::HeapBlock<double> hist1;
+    juce::HeapBlock<double> hist2;
 };
 
 } // namespace qs::dsp

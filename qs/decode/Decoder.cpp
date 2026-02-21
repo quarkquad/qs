@@ -3,9 +3,9 @@
 
 #include "Decoder.h"
 
-namespace qs {
+using namespace juce;
 
-namespace decode {
+namespace qs::decode {
 
 Decoder::Decoder(Spec spec) : matrix(spec.timing, spec.lrWidthDB, spec.fbWidthDB) {}
 
@@ -28,6 +28,4 @@ void Decoder::reset() {
     matrix.reset();
 }
 
-} // namespace decode
-
-} // namespace qs
+} // namespace qs::decode

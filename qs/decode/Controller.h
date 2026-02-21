@@ -8,8 +8,6 @@
 #include "../dsp/math.h"
 #include <juce_audio_basics/juce_audio_basics.h>
 
-using namespace juce;
-
 namespace qs::decode {
 
 enum class CtrlChannel { A, B };
@@ -41,7 +39,7 @@ class Controller {
     Controller(dsp::EnvelopeTiming timing, float widthDB);
 
     // process calculates the control coefficients from a stereo signal.
-    void process(AudioBuffer<float> &buffer);
+    void process(juce::AudioBuffer<float> &buffer);
 
     // prepare sets the sample rate.
     void prepare(float rate);

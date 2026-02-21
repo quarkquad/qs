@@ -4,6 +4,8 @@
 #include "MultiBandDecoder.h"
 #include "BandDecoder.h"
 
+using namespace juce;
+
 namespace qs::decode {
 
 MultiBandDecoder::MultiBandDecoder(std::vector<BandSpec> specs) {

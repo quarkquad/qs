@@ -9,11 +9,7 @@
 #include "../dsp/math.h"
 #include "VariableMatrix.h"
 
-using namespace juce;
-
-namespace qs {
-
-namespace decode {
+namespace qs::decode {
 
 // Decoder is an active, single-band QS decoder.
 //
@@ -51,7 +47,7 @@ class Decoder {
     Decoder(Spec spec);
 
     // process performs the decoding.
-    void process(AudioBuffer<float> &buffer);
+    void process(juce::AudioBuffer<float> &buffer);
 
     // prepare sets the sample rate and expected block size.
     void prepare(float rate, int samplesPerBlock);
@@ -64,6 +60,4 @@ class Decoder {
     VariableMatrix matrix;
 };
 
-} // namespace decode
-
-} // namespace qs
+} // namespace qs::decode

@@ -3,6 +3,8 @@
 
 #include "IIRFilter.h"
 
+using namespace juce;
+
 namespace qs::dsp {
 
 IIRFilter::IIRFilter(Coefficients c) : coeffs{c}, coeffsQuant{c} {

@@ -5,6 +5,8 @@
 #include <juce_dsp/juce_dsp.h>
 #include <qs/qs.h>
 
+using namespace juce;
+
 const float epsilon = 0.0001f;
 const float sampleRate = 44100.0f;
 

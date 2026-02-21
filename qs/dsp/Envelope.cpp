@@ -3,6 +3,8 @@
 
 #include "Envelope.h"
 
+using namespace juce;
+
 namespace qs::dsp {
 
 Envelope::Envelope(EnvelopeTiming timing, int numChannels)

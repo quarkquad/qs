@@ -28,10 +28,10 @@ class BandDecoder {
     BandDecoder(BandSpec spec);
 
     // filterAndDecodeFrom filters the input and decodes it to an internal buffer.
-    void filterAndDecodeFrom(AudioBuffer<float> &buffer);
+    void filterAndDecodeFrom(juce::AudioBuffer<float> &buffer);
 
     // addTo adds the resulting filtered decode data to a buffer.
-    void addTo(AudioBuffer<float> &buffer);
+    void addTo(juce::AudioBuffer<float> &buffer);
 
     // prepare sets the sample rate and expected block size.
     void prepare(float rate, int samplesPerBlock);
@@ -40,7 +40,7 @@ class BandDecoder {
     void reset();
 
   private:
-    AudioBuffer<float> buffer;
+    juce::AudioBuffer<float> buffer;
     dsp::IIRFilter filter;
     VariableMatrix matrix;
 

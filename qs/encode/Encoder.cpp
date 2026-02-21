@@ -3,6 +3,8 @@
 
 #include "Encoder.h"
 
+using namespace juce;
+
 namespace qs::encode {
 
 void Encoder::process(AudioBuffer<float> &buffer) {

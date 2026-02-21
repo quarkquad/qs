@@ -3,6 +3,8 @@
 
 #include "Controller.h"
 
+using namespace juce;
+
 namespace qs::decode {
 
 Controller::Controller(dsp::EnvelopeTiming timing, float initWidthDB) : env(timing, 2), widthDB(initWidthDB) {}

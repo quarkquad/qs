@@ -45,7 +45,7 @@ class VariableMatrix {
 
     // process decodes a stereo signal and writes it back as a quadraphonic
     // signal.
-    void process(AudioBuffer<float> &buffer);
+    void process(juce::AudioBuffer<float> &buffer);
 
     // prepare sets the sample rate and number of samples to be processed per
     // block of audio.
@@ -56,7 +56,7 @@ class VariableMatrix {
 
   private:
     Controller ctrlLR, ctrlFB;
-    AudioBuffer<float> bufferLR, bufferFB;
+    juce::AudioBuffer<float> bufferLR, bufferFB;
 };
 
 } // namespace qs::decode

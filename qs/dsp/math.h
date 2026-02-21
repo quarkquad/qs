@@ -6,15 +6,13 @@
 #include <cmath>
 #include <juce_audio_basics/juce_audio_basics.h>
 
-using namespace juce;
-
 namespace qs::dsp {
 
-const float root2 = sqrt(2.0f);
+inline constexpr float root2 = 1.41421356f;
 
 inline float safeLog10(float v) { return log10f(v + 1e-12f); }
 
-inline void log10Channels(AudioBuffer<float> &buffer) {
+inline void log10Channels(juce::AudioBuffer<float> &buffer) {
     const int numChannels = buffer.getNumChannels();
     const int numSamples = buffer.getNumSamples();
 

@@ -9,8 +9,6 @@
 #define M_PI (3.14159265358979323846)
 #endif
 
-using namespace juce;
-
 namespace qs::dsp {
 
 // HilbertTransform calculates a Hilbert transform of an incoming signal.
@@ -38,7 +36,7 @@ class HilbertTransform {
     // cosine component and the imag is the sine component. In more concrete
     // terms: The imaginary component is -90 degrees out of phase from the real
     // component.
-    void process(AudioBuffer<float> &buf, int realChanNum, int imagChanNum, int srcChanNum);
+    void process(juce::AudioBuffer<float> &buf, int realChanNum, int imagChanNum, int srcChanNum);
 
     // tick processes a single sample.
     void tick(float &real, float &imaginary, float in);
@@ -54,9 +52,9 @@ class HilbertTransform {
 
     bool initialized = false;
     int poles = 0;
-    HeapBlock<float> coeffs;
-    HeapBlock<float> histX;
-    HeapBlock<float> histY;
+    juce::HeapBlock<float> coeffs;
+    juce::HeapBlock<float> histX;
+    juce::HeapBlock<float> histY;
     float x1 = 0.0f;
     float x2 = 0.0f;
 };

@@ -13,7 +13,7 @@ name:               qs
 description:        QS encoder and decoder.
 website:            https://dublab.com
 license:            Apache-2.0
-minimumCppStandard: 14
+minimumCppStandard: 17
 dependencies:       juce_dsp
 
 END_JUCE_MODULE_DECLARATION

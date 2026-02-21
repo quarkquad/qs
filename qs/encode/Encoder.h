@@ -8,13 +8,11 @@
 #include "../dsp/HilbertTransform.h"
 #include "../dsp/math.h"
 
-using namespace juce;
-
 namespace qs::encode {
 
 enum Channel { LF, RF, LB, RB };
 
-const float coeff = dsp::root2 - 1.0f;
+inline constexpr float coeff = dsp::root2 - 1.0f;
 
 // Encoder is a static QS encoder. It encodes four distinct channels to a stereo
 // signal in the QS Regular Matrix format (4-2).
@@ -38,7 +36,7 @@ class Encoder {
   public:
     // process encodes a four-channel input into a stereo output. The rear
     // channels are zeroed.
-    void process(AudioBuffer<float> &buffer);
+    void process(juce::AudioBuffer<float> &buffer);
 
     // prepare sets the sample rate and number of samples to expect per block of
     // audio.

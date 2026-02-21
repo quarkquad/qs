@@ -5,7 +5,7 @@
 
 namespace qs::dsp {
 
-const int COEFFICIENTS_RATE = 48000;
+inline constexpr int COEFFICIENTS_RATE = 48000;
 
 // Coefficients are second-order coefficients for IIRFilter.
 struct Coefficients {
